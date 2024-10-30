@@ -13,7 +13,7 @@ export default function ClientHeader({ navItems }: { navItems: NavItem[] }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-b from-white to-transparent dark:from-gray-900">
+    <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-[2px] border-b border-tertiary/30 font-mono bg-secondary/80">
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
@@ -27,7 +27,7 @@ export default function ClientHeader({ navItems }: { navItems: NavItem[] }) {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 transition duration-150 ease-in-out flex items-center"
+                  className="px-3 py-2 rounded-md text-sm font-medium text-foreground hover:text-accent hover:bg-tertiary/10 transition duration-150 ease-in-out flex items-center"
                 >
                   {item.icon && <span className="mr-2">{item.icon}</span>}
                   {item.name}

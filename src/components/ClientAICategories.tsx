@@ -30,7 +30,7 @@ export default function ClientAICategories({ categories }: { categories: Categor
     <div className="relative">
       <svg className="w-full h-auto" viewBox="0 0 400 300">
         {/* Central AI node */}
-        <circle cx="200" cy="150" r="30" fill="#333" />
+        <circle cx="200" cy="150" r="30" fill="var(--accent)" />
         <text x="200" y="155" textAnchor="middle" fill="white" fontSize="14">
           AI
         </text>
@@ -48,7 +48,7 @@ export default function ClientAICategories({ categories }: { categories: Categor
                 y1="150"
                 x2={x}
                 y2={y}
-                stroke={activeCategory === category.name ? "#3B82F6" : "#E5E7EB"}
+                stroke={activeCategory === category.name ? "var(--accent)" : "var(--tertiary)"}
                 strokeWidth={activeCategory === category.name ? "3" : "1"}
               >
                 <animate
@@ -63,8 +63,8 @@ export default function ClientAICategories({ categories }: { categories: Categor
                 cx={x}
                 cy={y}
                 r="45"
-                fill={activeCategory === category.name ? `url(#${category.name.replace(/\s+/g, '')})` : "white"}
-                stroke={activeCategory === category.name ? "transparent" : "#E5E7EB"}
+                fill={activeCategory === category.name ? `url(#${category.name.replace(/\s+/g, '')})` : "var(--secondary)"}
+                stroke={activeCategory === category.name ? "transparent" : "var(--tertiary)"}
                 strokeWidth="2"
                 onMouseEnter={() => setActiveCategory(category.name)}
                 onMouseLeave={() => setActiveCategory(null)}

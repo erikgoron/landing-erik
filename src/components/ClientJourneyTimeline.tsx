@@ -32,7 +32,7 @@ export default function ClientJourneyTimeline({ timelineData }: { timelineData: 
 
   return (
     <div ref={timelineRef} className="relative">
-      <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-gray-200 dark:bg-gray-700"></div>
+      <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-tertiary"></div>
       {timelineData.map((item, index) => (
         <div
           key={index}
@@ -46,12 +46,12 @@ export default function ClientJourneyTimeline({ timelineData }: { timelineData: 
               index % 2 === 0 ? "mt-1" : "mt-1"
             }`}
           ></div>
-          <div className="w-1/2 p-4">
-            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-              <span className="text-sm font-bold text-blue-500 dark:text-blue-400">{item.year}</span>
-              <h3 className="text-lg font-semibold mt-1">{item.role}</h3>
-              <p className="text-blue-600 dark:text-blue-400">{item.company}</p>
-              <p className="text-gray-600 dark:text-gray-300 mt-2">{item.description}</p>
+          <div className="w-1/2 p-4 font-mono">
+            <div className="backdrop-blur-[2px] border border-tertiary/30 bg-secondary/80 p-6 rounded-lg">
+              <span className="text-sm font-bold text-accent">{item.year}</span>
+              <h3 className="text-lg font-semibold mt-1 text-foreground">{item.role}</h3>
+              <p className="text-accent">{item.company}</p>
+              <p className="text-foreground/80 mt-2">{item.description}</p>
             </div>
           </div>
         </div>

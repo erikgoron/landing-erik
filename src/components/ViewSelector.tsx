@@ -19,7 +19,7 @@ export default function ViewSelector({ onViewChange, label = "View" }: ViewSelec
   return (
     <button
       onClick={toggleView}
-      className="fixed top-20 right-4 z-10 flex items-center space-x-2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition duration-300"
+      className="fixed top-20 right-4 z-10 flex items-center space-x-2 bg-accent hover:bg-tertiary text-secondary font-bold py-2 px-4 rounded transition duration-300 font-mono"
     >
       {isTechnicalView ? (
         <>

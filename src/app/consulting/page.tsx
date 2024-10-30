@@ -25,7 +25,7 @@ export default function AIConsultingPage() {
   const [isDetailedView, setIsDetailedView] = useState(false);
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8 font-mono">
       <h1 className="text-4xl font-bold mb-8 text-center">AI Consulting Services</h1>
       <ViewSelector onViewChange={setIsDetailedView} />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

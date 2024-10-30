@@ -8,12 +8,27 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        mono: [
+          "Source Code Pro",
+          "Menlo",
+          "Consolas",
+          "Monaco",
+          "Liberation Mono",
+          "Lucida Console",
+          "monospace",
+        ],
+      },
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        background: 'var(--background)',
+        foreground: 'var(--foreground)',
+        accent: 'var(--accent)',
+        secondary: 'var(--secondary)',
+        tertiary: 'var(--tertiary)',
       },
     },
   },
   plugins: [],
 };
+
 export default config;

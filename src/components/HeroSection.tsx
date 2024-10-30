@@ -1,12 +1,24 @@
+import { TypewriterText } from './TypewriterText';
+
 export default function HeroSection() {
+  const roles = ['builder.', 'engineer.', 'researcher.', 'consultant.', '.']
+  
   return (
-    <section className="bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 py-24">
+    <section className="py-24 font-mono">
       <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 text-foreground">
           Hi, I&apos;m Erik.
         </h1>
-        <p className="text-lg sm:text-xl md:text-2xl text-gray-700 dark:text-gray-300 max-w-3xl">
-          I&apos;m an AI engineer and researcher passionate about building AI solutions that enhance human capabilities. Through my work in Health, Education, and Human Understanding, I help bridge the gap between cutting-edge AI research and real-world applications.
+        <p className="text-lg sm:text-xl md:text-2xl text-foreground/80 max-w-3xl">
+          <TypewriterText 
+            baseText="I'm "
+            words={roles}
+            prefixText="an AI"
+          />
+        </p>
+        <p className="text-lg sm:text-xl md:text-2xl text-foreground/80 max-w-3xl mt-4">
+          My work in AI spans across domains, with a passion for human-centric applications.<br />
+          I help bridge the gap between cutting-edge AI research and real-world solutions.
         </p>
       </div>
     </section>

@@ -23,7 +23,7 @@ const timelineData = [
 
 export default function JourneyTimeline() {
   return (
-    <section className="py-16 bg-white dark:bg-gray-900">
+    <section className="py-16 font-mono">
       <div className="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl font-bold text-center mb-12">My Journey</h2>
         <ClientJourneyTimeline timelineData={timelineData} />
