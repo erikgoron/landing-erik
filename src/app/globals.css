@@ -6,9 +6,66 @@
   --background: #c2dbf4;
   --foreground: #2f353f;
   --accent: #4a90e2;
-  --secondary: #fef3e0;
   --tertiary: #94b8e0;
+  --secondary: #fef3e0;
+
+  --secondary-1: #d7d2c9;
+  --secondary-2: #d2cbbf;
+  --secondary-3: #c9bfac;
+  --secondary-4: #c3b398;
+  --secondary-5: #b9a98e;
+  --secondary-6: #ae9f84;
+  --secondary-7: #a29278;
+  --secondary-8: #8d7e64;
+  --secondary-9: #605239;
+  --secondary-10: #564830;
+  --secondary-11: #3c2f17;
+  --secondary-12: #2a1e06;
+
+  --secondary-a1: #ffc17858;
+  --secondary-a2: #ff9f2b43;
+  --secondary-a3: #fe00001e;
+  --secondary-a4: #f6000005;
+  --secondary-a5: #ac64016b;
+  --secondary-a6: #97590276;
+  --secondary-a7: #844c0082;
+  --secondary-a8: #693e0097;
+  --secondary-a9: #432801c4;
+  --secondary-a10: #3c2400cd;
+  --secondary-a11: #2e1d00e7;
+  --secondary-a12: #261a00f9;
+
+  --secondary-contrast: #ffffff;
+  --secondary-surface: #ffffffcc;
+  --secondary-indicator: #605239;
+  --secondary-track: #605239;
+
+  --tag-founder: #ecc94a;
+  --tag-builder: #ecc94a;
+  --tag-research: #94e2d5;
+  --tag-employee: #a5b4fc;
+  --tag-student: #fdb5b5;
+  --tag-fullstack: #93c5fd;
 }
+/* 
+@supports (color: color(display-p3 1 1 1)) {
+  @media (color-gamut: p3) {
+    :root {
+      --secondary-1: oklch(86.5% 0.0136 81.48);
+      --secondary-2: oklch(84.3% 0.0181 81.48);
+      --secondary-3: oklch(80.7% 0.0277 81.48);
+      --secondary-4: oklch(77.4% 0.0415 81.48);
+      --secondary-5: oklch(74.2% 0.0415 81.48);
+      --secondary-6: oklch(70.9% 0.0415 81.48);
+      --secondary-7: oklch(66.8% 0.0415 81.48);
+      --secondary-8: oklch(60% 0.0415 81.48);
+      --secondary-9: oklch(44.5% 0.0415 81.48);
+      --secondary-10: oklch(40.9% 0.0415 81.48);
+      --secondary-11: oklch(31.2% 0.0415 81.48);
+      --secondary-12: oklch(24.3% 0.0415 81.48);
+    }
+  }
+} */
 
 body {
   color: var(--foreground);

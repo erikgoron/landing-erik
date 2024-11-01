@@ -1,7 +1,7 @@
 import { TypewriterText } from './TypewriterText';
 
 export default function HeroSection() {
-  const roles = ['builder.', 'engineer.', 'researcher.', 'consultant.', '.']
+  const roles = ['engineer.', 'researcher.','builder.', 'consultant.', '.']
   
   return (
     <section className="py-24 font-mono">
@@ -17,7 +17,7 @@ export default function HeroSection() {
           />
         </p>
         <p className="text-lg sm:text-xl md:text-2xl text-foreground/80 max-w-3xl mt-4">
-          My work in AI spans across domains, with a passion for human-centric applications.<br />
+          My work in AI/ML spans across many domains, with a passion for human-centric applications.<br />
           I help bridge the gap between cutting-edge AI research and real-world solutions.
         </p>
       </div>
