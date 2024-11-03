@@ -110,3 +110,9 @@ body {
 .group:not(:hover) .group-hover\:opacity-100 {
   transition-delay: 0.15s;
 }
+
+@keyframes drawLine {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
