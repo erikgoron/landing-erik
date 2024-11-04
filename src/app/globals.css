@@ -41,11 +41,19 @@
   --secondary-track: #605239;
 
   --tag-founder: #ecc94a;
+  --tag-founder-border: #d4ab1d;
   --tag-builder: #ecc94a;
+  --tag-builder-border: #d4ab1d;
   --tag-research: #94e2d5;
+  --tag-research-border: #68b5a9;
   --tag-employee: #a5b4fc;
-  --tag-student: #fdb5b5;
+  --tag-employee-border: #7a8bf8;
+  --tag-education: #ffc0ad;
+  --tag-education-border: #ffb199;
   --tag-fullstack: #93c5fd;
+  --tag-fullstack-border: #7a8bf8;
+  --tag-work: #9333ea;
+  --tag-work-border: #7928c9;
 }
 /* 
 @supports (color: color(display-p3 1 1 1)) {
@@ -115,4 +123,25 @@ body {
   to {
     stroke-dashoffset: 0;
   }
+}
+
+@keyframes drawCloud {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Replace the existing drawCloud animation with these styles */
+.cloud-draw {
+  stroke-dasharray: 300;
+  stroke-dashoffset: 300;
+  transition: stroke-dashoffset 0s;
+}
+
+.group:hover .cloud-draw {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 2s cubic-bezier(0.4, 0, 0.2, 1);
 }

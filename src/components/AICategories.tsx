@@ -21,7 +21,7 @@ const categories = [
   },
 ];
 
-export default function AICategoriesComponent() {
+export default function AICategories() {
   return (
     <section className="py-8 font-mono">
       <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">

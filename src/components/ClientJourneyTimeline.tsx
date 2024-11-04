@@ -19,39 +19,39 @@ type OrderingMode = 'work-study' | 'founder-other' | 'chronological';
 const TAG_COLORS: Record<string, { from: string; to: string; text: string; border: string }> = {
   founder: {
     from: 'var(--tag-founder)',
-    to: '#e6bc2f',
+    to: 'var(--tag-founder)',
     text: '#3D3417',
-    border: '#d4ab1d'
+    border: 'var(--tag-founder-border)'
   },
   research: {
     from: 'var(--tag-research)',
-    to: '#7dcdc0',
+    to: 'var(--tag-research)',
     text: '#1D3D3A',
-    border: '#68b5a9'
+    border: 'var(--tag-research-border)'
   },
   employee: {
     from: 'var(--tag-employee)',
-    to: '#8e9efa',
+    to: 'var(--tag-employee)',
     text: '#2D3256',
-    border: '#7a8bf8'
+    border: 'var(--tag-employee-border)'
   },
-  student: {
-    from: 'var(--tag-student)',
-    to: '#ffc0ad',
+  education: {
+    from: 'var(--tag-education)',
+    to: 'var(--tag-education)',
     text: '#4A2D2D',
-    border: '#ffb199'
+    border: 'var(--tag-education-border)'
   },
   fullstack: {
     from: 'var(--tag-fullstack)',
-    to: '#93c5fd',
+    to: 'var(--tag-fullstack)',
     text: '#4A2D2D',
-    border: '#6ba6e9'
+    border: 'var(--tag-fullstack-border)'
   },
   work: {
-    from: '#9333ea',
-    to: '#a855f7',
+    from: 'var(--tag-work)',
+    to: 'var(--tag-work)',
     text: '#2D1B3D',
-    border: '#7928c9'
+    border: 'var(--tag-work-border)'
   }
 };
 
@@ -85,31 +85,31 @@ export default function ClientJourneyTimeline({ timelineData }: { timelineData: 
   const modeConfig = {
     'work-study': {
       left: {
-        text: 'WORK',
-        color: TAG_COLORS.work.from,
-        borderColor: TAG_COLORS.work.border,
+        text: 'Work',
+        color: 'work',
+        borderColor: 'var(--tag-work-border)',
       },
       right: {
-        text: 'EDUCATION',
-        color: TAG_COLORS.student.from,
-        borderColor: TAG_COLORS.student.border,
+        text: 'Education',
+        color: 'education',
+        borderColor: 'var(--tag-education-border)',
       }
     },
     'founder-other': {
       left: {
-        text: 'EMPLOYEE',
-        color: TAG_COLORS.employee.from,
-        borderColor: TAG_COLORS.employee.border,
+        text: 'Employee',
+        color: 'employee',
+        borderColor: 'var(--tag-employee-border)',
       },
       right: {
-        text: 'FOUNDER',
-        color: TAG_COLORS.founder.from,
-        borderColor: TAG_COLORS.founder.border,
+        text: 'Founder',
+        color: 'founder',
+        borderColor: 'var(--tag-founder-border)',
       }
     },
     'chronological': {
-      text: 'CHRONOLOGICAL',
-      color: '#374151',
+      text: 'Chronological',
+      color: '#6B7280',
       borderColor: '#000000',
     }
   };
@@ -121,7 +121,7 @@ export default function ClientJourneyTimeline({ timelineData }: { timelineData: 
       }
     : timelineData.reduce((acc, item) => {
         const isRightSide = orderingMode === 'work-study' 
-          ? item.tags.includes('student')
+          ? item.tags.includes('education')
           : item.tags.includes('founder');
         
         const side = isRightSide ? 'right' : 'left';
@@ -129,130 +129,144 @@ export default function ClientJourneyTimeline({ timelineData }: { timelineData: 
         return acc;
       }, { left: [], right: [] } as { left: TimelineItem[], right: TimelineItem[] });
 
-  // Helper function for text stroke style with matching border color
-  const getTextStyle = (color: string, borderColor: string) => ({
-    color: color,
-    WebkitTextStroke: `1.0px ${borderColor}`, // Using the border color for text outline
+
+  const getButtonStyle = (isActive: boolean, color: string, borderColor: string) => ({
+    color: isActive ? TAG_COLORS[color]?.text || '#000000' : '#4B5563',
+    background: isActive 
+      ? `linear-gradient(to bottom, ${TAG_COLORS[color]?.from || color}, ${TAG_COLORS[color]?.to || color})`
+      : 'transparent',
+    borderRadius: '0.75rem',
+    border: `1px solid ${isActive ? TAG_COLORS[color]?.border || borderColor : '#E5E7EB'}`,
+    transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
+    boxShadow: isActive 
+      ? 'inset 0 1px 0 rgba(255,255,255,0.4), 0 1px 3px rgba(0,0,0,0.1)'
+      : 'none',
   });
 
   return (
     <div>
       <div className="flex justify-center mb-12">
-        <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
+        <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 p-2 rounded-xl bg-background/50 backdrop-blur-sm">
           <button
             onClick={() => setOrderingMode('chronological')}
-            className={`text-lg font-semibold transition-all px-4 py-1 rounded-md ${
+            className={`text-lg font-medium transition-all px-5 py-2 hover:bg-foreground/5 ${
               orderingMode === 'chronological' 
-                ? 'opacity-100 scale-105' 
-                : 'opacity-50 hover:opacity-90 hover:scale-105'
+                ? 'opacity-100' 
+                : 'opacity-70 hover:opacity-90'
             }`}
-            style={getTextStyle(modeConfig.chronological.color, modeConfig.chronological.borderColor)}
+            style={getButtonStyle(
+              orderingMode === 'chronological',
+              modeConfig.chronological.color,
+              modeConfig.chronological.borderColor
+            )}
           >
             Chronological
           </button>
-                    
-          <button
-            onClick={() => setOrderingMode('work-study')}
-            className={`inline-flex items-center ${
-              orderingMode === 'work-study' 
-                ? 'opacity-100 scale-105' 
-                : 'opacity-50 hover:opacity-90 hover:scale-105'
-            }`}
-          >
-            <span 
-              className="text-lg font-semibold px-3 py-1"
-              style={getTextStyle(modeConfig['work-study'].left.color, modeConfig['work-study'].left.borderColor)}
+          
+          <div className="flex items-center gap-3">
+            <button
+              onClick={() => setOrderingMode('work-study')}
+              className={`inline-flex items-center gap-3 px-5 py-2 ${
+                orderingMode === 'work-study' 
+                  ? 'opacity-100' 
+                  : 'opacity-70 hover:opacity-90'
+              }`}
             >
-              Work
-            </span>
-            <span className="mx-2 text-foreground/80 relative">
-              <svg 
-                width="2" 
-                height="24" 
-                className="opacity-100"
-                viewBox="0 0 2 24" 
-                fill="none" 
-                xmlns="http://www.w3.org/2000/svg"
+              <span 
+                className="text-lg font-medium px-4 py-2 rounded-lg"
+                style={getButtonStyle(
+                  orderingMode === 'work-study',
+                  modeConfig['work-study'].left.color,
+                  modeConfig['work-study'].left.borderColor
+                )}
               >
-                <path 
-                  d="M1 0C1 0 -0.5 6 1 12C2.5 18 1 24 1 24" 
-                  stroke="currentColor" 
-                  strokeWidth="1.5"
-                />
-              </svg>
-            </span>
-            <span 
-              className="text-lg font-semibold px-3 py-1"
-              style={getTextStyle(modeConfig['work-study'].right.color, modeConfig['work-study'].right.borderColor)}
-            >
-              Education
-            </span>
-          </button>
-                    
-          <button
-            onClick={() => setOrderingMode('founder-other')}
-            className={`inline-flex items-center ${
-              orderingMode === 'founder-other' 
-                ? 'opacity-100 scale-105' 
-                : 'opacity-50 hover:opacity-90 hover:scale-105'
-            }`}
-          >
-            <span 
-              className="text-lg font-semibold px-3 py-1"
-              style={getTextStyle(modeConfig['founder-other'].left.color, modeConfig['founder-other'].left.borderColor)}
-            >
-              Employee
-            </span>
-            <span className="mx-2 text-foreground/80 relative">
-              <svg 
-                width="2" 
-                height="24" 
-                className="opacity-90"
-                viewBox="0 0 2 24" 
-                fill="none" 
-                xmlns="http://www.w3.org/2000/svg"
+                Work
+              </span>
+              <span className="text-foreground/40">/</span>
+              <span 
+                className="text-lg font-medium px-4 py-2 rounded-lg"
+                style={getButtonStyle(
+                  orderingMode === 'work-study',
+                  modeConfig['work-study'].right.color,
+                  modeConfig['work-study'].right.borderColor
+                )}
               >
-                <path 
-                  d="M1 0C1 0 -0.5 6 1 12C2.5 18 1 24 1 24" 
-                  stroke="currentColor" 
-                  strokeWidth="1.5"
-                />
-              </svg>
-            </span>
-            <span 
-              className="text-lg font-semibold px-3 py-1"
-              style={getTextStyle(modeConfig['founder-other'].right.color, modeConfig['founder-other'].right.borderColor)}
+                Education
+              </span>
+            </button>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <button
+              onClick={() => setOrderingMode('founder-other')}
+              className={`inline-flex items-center gap-3 px-5 py-2 ${
+                orderingMode === 'founder-other' 
+                  ? 'opacity-100' 
+                  : 'opacity-70 hover:opacity-90'
+              }`}
             >
-              Founder
-            </span>
-          </button>
+              <span 
+                className="text-lg font-medium px-4 py-2 rounded-lg"
+                style={getButtonStyle(
+                  orderingMode === 'founder-other',
+                  modeConfig['founder-other'].left.color,
+                  modeConfig['founder-other'].left.borderColor
+                )}
+              >
+                Employee
+              </span>
+              <span className="text-foreground/40">/</span>
+              <span 
+                className="text-lg font-medium px-4 py-2 rounded-lg"
+                style={getButtonStyle(
+                  orderingMode === 'founder-other',
+                  modeConfig['founder-other'].right.color,
+                  modeConfig['founder-other'].right.borderColor
+                )}
+              >
+                Founder
+              </span>
+            </button>
+          </div>
         </div>
       </div>
 
       {orderingMode !== 'chronological' ? (
         <div className="grid grid-cols-2 mb-8">
           <div className="text-center">
-            <h3 
-              className="text-lg font-semibold px-4 py-1 rounded-md inline-block"
-              style={getTextStyle(modeConfig[orderingMode].left.color, modeConfig[orderingMode].left.borderColor)}
+            <span 
+              className="text-lg font-medium px-4 py-2 rounded-lg inline-block"
+              style={getButtonStyle(
+                true, // Always active for headers
+                modeConfig[orderingMode].left.color,
+                modeConfig[orderingMode].left.borderColor
+              )}
             >
               {modeConfig[orderingMode].left.text}
-            </h3>
+            </span>
           </div>
           <div className="text-center">
-            <h3 
-              className="text-lg font-semibold px-4 py-1 rounded-md inline-block"
-              style={getTextStyle(modeConfig[orderingMode].right.color, modeConfig[orderingMode].right.borderColor)}
+            <span 
+              className="text-lg font-medium px-4 py-2 rounded-lg inline-block"
+              style={getButtonStyle(
+                true, // Always active for headers
+                modeConfig[orderingMode].right.color,
+                modeConfig[orderingMode].right.borderColor
+              )}
             >
               {modeConfig[orderingMode].right.text}
-            </h3>
+            </span>
           </div>
         </div>
       ) : (
         <div className="text-center mb-8">
           <h3 
-            className="text-lg font-semibold px-4 py-1 rounded-md inline-block"
-            style={getTextStyle(modeConfig.chronological.color, modeConfig.chronological.borderColor)}
+            className="text-lg font-medium px-4 py-1 rounded-md inline-block"
+            style={getButtonStyle(
+              true, // Always active for headers
+              modeConfig.chronological.color,
+              modeConfig.chronological.borderColor
+            )}
           >
             {modeConfig.chronological.text}
           </h3>

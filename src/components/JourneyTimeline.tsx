@@ -42,7 +42,7 @@ const timelineData = [
     role: "Graduate Visiting Researcher",
     company: "UCSD",
     description: "Conducted research in speech processing and facial paralysis detection.",
-    tags: ["research", "student"],
+    tags: ["research", "education"],
     logo: "ucsd.svg",
     country: "usa.svg"
   },
@@ -60,7 +60,7 @@ const timelineData = [
     role: "Computer Vision Researcher",
     company: "ETH Zürich",
     description: "Research on geometric deep learning and Neural Architecture Search (NAS). Main applications in computer vision such as action recognition and facial emotion recognition.",
-    tags: ["research", "student"],
+    tags: ["research", "education"],
     logo: "eth.svg",
     country: "switzerland.svg"
   },
@@ -69,7 +69,7 @@ const timelineData = [
     role: "MSc Mechanical Engineer",
     company: "ETH Zürich",
     description: "Mechanical Engineering with a focus on robotics and machine learning. My passion for building things through code started here.",
-    tags: ["student"],
+    tags: ["education"],
     logo: "eth.svg",
     country: "switzerland.svg"
   },
@@ -78,7 +78,7 @@ const timelineData = [
     role: "BSc Mechanical Engineer",
     company: "EPF Lausanne",
     description: "Bachelor in Mechanical Engineering. This is where things in my life started getting real. Learned a lot about discipline, hard work and the importance of a healthy lifestyle.",
-    tags: ["student"],
+    tags: ["education"],
     logo: "epf.svg",
     country: "switzerland.svg"
   }
